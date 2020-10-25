@@ -1,0 +1,53 @@
+﻿@model Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.Sertifikalar
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+<div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-table table-responsive-sm"></i> Setifika Güncelle</h3>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-home"></i><a href="/YonetimPaneli">AnaSayfa</a></li>
+        <li><i class="fa fa-table"></i><a href="/Sertifikalar/">Sertifikalar</a></li>
+        <li><i class="fa fa-table">Sertifika Güncelle</i></li>
+
+    </ol>
+</div>
+@using (Html.BeginForm("Edit", "Sertifikalar", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Sertifikalar</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.SertifikaId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ResimURL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" class="form-control " name="ResimURL" accept=".jpg,.jpeg,.png" required />
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Kaydet" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön ", "Index")
+</div>

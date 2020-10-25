@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.UrunKategori>
+@using Ertunc_Tibbi_Cihaz_Web_Site.Helper;
+
+@foreach (var item in Model)
+{
+    <ul class="cat">
+        <li><i class="icon-angle-right"></i><a href="/ÜrünlerKategori/@SeoHelper.ToSeoUrl(item.UrunKategoriAd).ToLower()-@item.UrunKategoriId">@item.UrunKategoriAd</a><span> (@item.Urunlers.Count)</span></li>
+    </ul>
+}

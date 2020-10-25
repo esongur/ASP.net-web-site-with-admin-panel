@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.Kimlik>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+
+
+
+        <div class="col-lg-12">
+            <h3 class="page-header"><i class="fa fa-table table-responsive-sm"></i> Kimlik</h3>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="/YonetimPaneli">AnaSayfa</a></li>
+                <li><i class="fa fa-table"></i>Kimlik</li>
+            </ol>
+        </div>
+
+        <table class="table table-bordered table-responsive-sm table-responsive-md table-striped table-info">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Keywords)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LogoURL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Unvan)
+                </th>
+                <th>İşlemler</th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Keywords)
+                    </td>
+                    <td>
+                        @Html.Raw(item.Description)
+                    </td>
+                    <td>
+                        <img src="@item.LogoURL" width="300" height="200"/>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Unvan)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Güncelle", "Edit", new { id = item.KimlikId })
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+       

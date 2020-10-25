@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.Blog>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable(
+            {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+                }
+            });
+
+    });
+</script>
+<div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-table table-responsive-sm"></i> Blog-Haber</h3>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-home"></i><a href="/YonetimPaneli">AnaSayfa</a></li>
+        <li><i class="fa fa-table"></i><a href="/Blog/">Blog-Haber</a></li>
+
+    </ol>
+</div>
+<a class="btn btn-default" href="/Blog/Create">Yeni Blog </a>
+<table class="table table-striped" id="myTable">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Başlık</th>
+            <th>Kategori</th>
+            <th>Resim Url</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BlogId</td>
+                <td>@item.Baslik</td>
+                <td>@item.BlogKategori.BlogKategoriAd</td>
+                <td><img src="@item.ResimURL" width="100" height="100" /></td>
+                <td><a href="/Blog/Edit/@item.BlogId">Güncelle</a> | <a href="/Blog/Delete/@item.BlogId">Sil</a></td>
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>

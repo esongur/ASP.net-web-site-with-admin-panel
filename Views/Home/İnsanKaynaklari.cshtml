@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "İnsanKaynaklari";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+            <div class="span4">
+                <div class="inner-heading">
+                    <h2>İnsan Kaynakları</h2>
+                </div>
+            </div>
+            <div class="span8">
+                <ul class="breadcrumb">
+                    <li><a href="/Anasayfa"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+                    <li class="active">İnsan Kaynakları</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <aside class="left-sidebar">
+                    <div class="widget">
+                        <div class="left_menu" style="margin-right:20px; margin-left: 15px;">
+                            <div id="cssmenu">
+                                <ul>
+
+                                    <li class=""><a href="/Iletişim">İletişim</a></li>
+                                    <li class=""><a href="/İnsanKaynakları">İnsan Kaynakları</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </aside>
+            </div>
+            <section id="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="span8">
+                           <h2><strong>İnsan Kaynakarı</strong></h2>
+                                <p>
+                                    İş başvurusu için özgeçmişinizi  <a href="mailto:info@ertunctibbicihaz.com">info@ertunctibbicihaz.com</a> adresine ulaştırabilirsiniz. İhtiyaç duyulması durumunda sizinle iletişime geçilecektir.
+                                </p>
+
+                                
+                            
+                        </div>
+
+                        <div class="span8">
+                            <!-- start flexslider -->
+                            <!-- end flexslider -->
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+    
+</section>
+
+
+@{
+    Html.RenderAction("FooterPartial", "Home");}

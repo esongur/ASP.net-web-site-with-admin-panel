@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.UrunKategori>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+<div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-table table-responsive-sm"></i> Ürün Kategori</h3>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-home"></i><a href="/Admin/Index/">AnaSayfa</a></li>
+        <li><i class="fa fa-table"></i><a href="/UrunKategori/Index">Kategori</a></li>
+  
+    </ol>
+</div>
+<p>
+    @Html.ActionLink("Yeni", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunKategoriAd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunAciklama)
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrunKategoriAd)
+        </td>
+        <td>
+            @Html.Raw(item.UrunAciklama)
+        </td>
+        <td>
+            @Html.ActionLink("Güncelle", "Edit", new { id=item.UrunKategoriId }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.UrunKategoriId })
+        </td>
+    </tr>
+}
+
+</table>

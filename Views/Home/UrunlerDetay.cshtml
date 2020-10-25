@@ -1,0 +1,78 @@
+﻿@model Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.Urunler
+
+@{
+    ViewBag.Title = "UrunlerDetay";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+            <div class="span4">
+                <div class="inner-heading">
+                    <h2>Ürün Detay</h2>
+                </div>
+            </div>
+            <div class="span8">
+                <ul class="breadcrumb">
+                    <li><a href="/Anasayfa"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+                    <li><a href="#">Ürünler</a><i class="icon-angle-right"></i></li>
+                    <li class="active">@Model.UrunlerBaslik-Ürün Detay</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="span8">
+                <article>
+
+                    <div class="top-wrapper">
+                        <div class="post-heading">
+                            <h3><a href="#">@Model.UrunlerBaslik</a></h3>
+                        </div>
+                        <!-- start flexslider -->
+                        <div class="flexslider">
+                            <ul class="slides">
+                                <li>
+                                    <img src="@Model.UrunlerResimURL1" alt="" />
+                                </li>
+                                <li>
+                                    <img src="@Model.UrunlerResimURL2" alt="" />
+                                </li>
+                                <li>
+                                    <img src="@Model.UrunlerResimURL3" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- end flexslider -->
+                    </div>
+
+                </article>
+            </div>
+            <div class="span4">
+                <aside class="right-sidebar">
+                    <div class="widget">
+                        <h5 class="widgetheading">Ürün Bilgileri</h5>
+                        <ul class="folio-detail">
+                            <li><label>Kategori :</label> @Model.UrunKategori.UrunKategoriAd</li>
+                            <li><label>Ürün Adı :</label> @Model.UrunlerBaslik</li>
+                            <li><label>Fiyat :</label> @Model.UrunlerFiyat</li>
+                           
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widgetheading">Ürün Açıklama</h5>
+                        <p>
+                            @Model.UrünlerAciklama
+                        </p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+@{
+    Html.RenderAction("FooterPartial", "Home");}

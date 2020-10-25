@@ -1,0 +1,40 @@
+﻿@model Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.BiomedikalKategori
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+<div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-table table-responsive-sm"></i> Biomedikal Hizmetler Kategori Sil</h3>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-home"></i><a href="/YonetimPaneli">AnaSayfa</a></li>
+        <li><i class="fa fa-table"></i><a href="/BiomedikalKategori/">Biomedikal Hizmetler Kategori</a></li>
+        <li><i class="fa fa-table">Biomedikal Hizmetler Kategori Sil</i></li>
+
+    </ol>
+</div>
+<h3>Bu Kaydı Silmek İstediğinize Emin Misiniz?</h3>
+<div>
+    <h4>BiomedikalKategori</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BiomedikalKategoriAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BiomedikalKategoriAd)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Geri Dön ", "Index")
+        </div>
+    }
+</div>

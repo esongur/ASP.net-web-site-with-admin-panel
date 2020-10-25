@@ -1,0 +1,183 @@
+﻿﻿@using Ertunc_Tibbi_Cihaz_Web_Site.Helper;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - @ViewBag.Kimlik.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="@Html.Raw(ViewBag.Kimlik.Description)" />
+    <meta name="keywords" content="@Html.Raw(ViewBag.Kimlik.Keywords)" />
+    <meta name="author" content="" />
+
+    <!-- css -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="/Content/SiteLayout/css/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/SiteLayout/css/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="/Content/SiteLayout/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+    <link href="/Content/SiteLayout/css/jcarousel.css" rel="stylesheet" />
+    <link href="/Content/SiteLayout/css/flexslider.css" rel="stylesheet" />
+    <link href="/Content/SiteLayout/css/style.css" rel="stylesheet" />
+    <link href="~/Content/nivo-slider/nivo-slider.css" rel="stylesheet" />
+    <link href="~/Content/SiteLayout/css/Menu.css" rel="stylesheet" />
+    <!-- Theme skin -->
+    <link href="/Content/SiteLayout/skins/default.css" rel="stylesheet" />
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/Content/SiteLayout/ico/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Content/SiteLayout/ico/apple-touch-icon-114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Content/SiteLayout/ico/apple-touch-icon-72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="/Content/SiteLayout/ico/apple-touch-icon-57-precomposed.png" />
+    <link rel="shortcut icon" href="/Content/SiteLayout/ico/favicon.png" />
+    <link rel="stylesheet" href="~/Content/craftedpixelz-Craftyslide-4cd0adb/css/craftyslide.css" />
+
+    <link href="~/Content/SiteLayout/css/Product.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script type="text/javascript" src="http://www.ibrahimay.net/wp-content/scripts/google-web-translate.v1/esnek.js"></script>
+
+    <style>
+        div.img {
+            margin: 5px;
+            border: 1px solid #ccc;
+            float: left;
+            width: 180px;
+        }
+
+            div.img:hover {
+                border: 1px solid #777;
+            }
+
+            div.img img {
+                width: 100%;
+                height: auto;
+            }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="wrapper">
+        <!-- toggle top area -->
+        <!-- end toggle top area -->
+        <!-- start header -->
+        <header>
+            <div class="container ">
+                <!-- hidden top area toggle link -->
+                <!-- end toggle link -->
+                <div class="row nomargin">
+                    <div class="span12">
+                        <div class="span12">
+                            <div class="headnav">
+                                <ul>
+                                    <a href="#" onclick="doGTranslate('auto|tr');return false;" title="Turkish"><img src="~/Content/SiteLayout/img/tr.png" width="20" style="margin-right:5px;" />Türkçe</a>
+                                    <a href="#" onclick="doGTranslate('auto|en');return false;" title="English"><img src="~/Content/SiteLayout/img/eng.png" width="20" style="margin-right:5px;" />English</a>                                  
+                                </ul>
+                            </div>
+
+                            <!-- end reset modal -->
+                        </div>
+                        <div class="headnav">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span4">
+                        <div class="logo">
+                            <a href="/Anasayfa"><img src="@ViewBag.Kimlik.LogoURL" alt="" class="logo" /></a>
+                            <br />
+                            @*<a>@ViewBag.Kimlik.Unvan</a>*@
+                        </div>
+                    </div>
+                    <div class="span8">
+                        <div class="navbar navbar-static-top">
+                            <div class="navigation">
+                                <nav>
+                                    <ul class="nav topnav">
+                                        <li class="dropdown active">
+                                            <a href="/Anasayfa">Ana Sayfa </a>
+                                        </li>
+
+                                        <li class="dropdown">
+                                            <a href="/Kurumsal">Kurumsal </a>
+
+                                        <li class="dropdown">
+                                            <a href="/BiomedikalHizmetler">Biyomedikal Hizmetler <i class="icon-angle-down"></i></a>
+                                            <ul class="dropdown-menu">
+                                                @foreach (var item in ViewBag.Biomedikal)
+                                                {
+                                                    <li><a href="/BiomedikalHizmetlerKategori/@SeoHelper.ToSeoUrl(item.BiomedikalKategoriAd).ToLower()-@item.BiomedikalKategoriId">@item.BiomedikalKategoriAd</a></li>
+                                                }
+                                            </ul>
+                                        </li>
+
+                                        <li class="dropdown">
+                                            <a href="/Ürünler">Ürünler <i class="icon-angle-down"></i></a>
+                                            <ul class="dropdown-menu">
+                                                @foreach (var item in ViewBag.Urunler)
+                                                {
+                                                <li><a href="/ÜrünlerKategori/@SeoHelper.ToSeoUrl(item.UrunKategoriAd).ToLower()-@item.UrunKategoriId">@item.UrunKategoriAd</a></li>
+                                                }
+                                            </ul>
+                                        </li>
+
+
+
+
+                                        <li class="dropdown">
+                                            <a href="/Iletişim">İletişim <i class="icon-angle-down"></i></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/İnsanKaynakları">İnsan Kaynakları</a></li>
+
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                </nav>
+
+                            </div>
+                            <!-- end navigation -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- end header -->
+        @RenderBody()
+
+
+    </div>
+    <a href="#" class="scrollup"><i class="icon-chevron-up icon-square icon-32 active"></i></a>
+    <!-- javascript
+      ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/Content/SiteLayout/js/jquery.js"></script>
+    <script src="/Content/SiteLayout/js/jquery.easing.1.3.js"></script>
+    <script src="/Content/SiteLayout/js/bootstrap.js"></script>
+    <script src="/Content/SiteLayout/js/jcarousel/jquery.jcarousel.min.js"></script>
+    <script src="/Content/SiteLayout/js/jquery.fancybox.pack.js"></script>
+    <script src="/Content/SiteLayout/js/jquery.fancybox-media.js"></script>
+    <script src="/Content/SiteLayout/js/google-code-prettify/prettify.js"></script>
+    <script src="/Content/SiteLayout/js/portfolio/jquery.quicksand.js"></script>
+    <script src="/Content/SiteLayout/js/portfolio/setting.js"></script>
+    <script src="/Content/SiteLayout/js/jquery.flexslider.js"></script>
+    <script src="/Content/SiteLayout/js/jquery.nivo.slider.js"></script>
+    <script src="/Content/SiteLayout/js/modernizr.custom.js"></script>
+    <script src="/Content/SiteLayout/js/jquery.ba-cond.min.js"></script>
+    <script src="/Content/SiteLayout/js/jquery.slitslider.js"></script>
+    <script src="/Content/SiteLayout/js/animate.js"></script>
+    <script src="~/Content/nivo-slider/jquery.nivo.slider.pack.js"></script>
+    <script src="~/Content/nivo-slider/jquery.nivo.slider.js"></script>
+    <!-- Template Custom JavaScript File -->
+    <script src="/Content/SiteLayout/js/custom.js"></script>
+
+    <!------ Include the above in your HEAD tag ---------->
+    <!-- For IE & Edge -->
+
+
+</body>
+</html>

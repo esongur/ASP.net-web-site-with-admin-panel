@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.Admin>
+
+@{
+    ViewBag.Title = "Adminler";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+<div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-table table-responsive-sm"></i> Kullanıcılar</h3>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-home"></i><a href="/YonetimPaneli/">AnaSayfa</a></li>
+        <li><i class="fa fa-table"></i>Adminler</li>
+    </ol>
+</div>
+<p>
+    @Html.ActionLink("Yeni", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Eposta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sifre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Yetki)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Eposta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sifre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yetki)
+        </td>
+        <td>
+            @Html.ActionLink("Güncelle", "Edit", new { id=item.AdminId }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.AdminId })
+        </td>
+    </tr>
+}
+
+</table>

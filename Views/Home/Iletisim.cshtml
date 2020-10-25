@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Iletisim";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<script>
+function myFunction() {
+  alert("@ViewBag.Uyari");
+}
+</script>
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+            <div class="span4">
+                <div class="inner-heading">
+                    <h2>İLETİŞİM</h2>
+                </div>
+            </div>
+            <div class="span8">
+                <ul class="breadcrumb">
+                    <li><a href="/Anasayfa"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+                    <li class="active">İletişim</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="content">
+    @*<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22864.11283411948!2d-73.96468908098944!3d40.630720240038435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sbg!4v1540447494452" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>*@
+    @*<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d964.8398268216555!2d32.8447968292517!3d39.9456150268776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s%20Z%C3%BCbeyde%20Han%C4%B1m%20Mahallesi%20Sebze%20Bah%C3%A7eleri%20Caddesi%2080%2F28%20(114%2C16%20km)%2006070%20Ankara!5e1!3m2!1str!2str!4v1583735675446!5m2!1str!2str" width="100%" height="380" frameborder="0" style="border:0;" allowfullscreen=""></iframe>*@
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.810954797589!2d32.84315531569624!3d39.94561809207956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d34e8c5397dacf%3A0x2abd04a1cf59c383!2zWsO8YmV5ZGUgSGFuxLFtLCBTZWJ6ZSBCYWjDp2VsZXJpIENkLiBObzo4MCwgMDYwNzAgQWx0xLFuZGHEny9BbmthcmE!5e0!3m2!1str!2str!4v1586492125994!5m2!1str!2str" width="1900" height="380" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+    <div class="container">
+        <div class="row">
+            <div class="span6">
+                <div class="widget ">
+                    <br /><br />
+
+                    <h5 class="widgetheading"><strong>Ankara Merkez Ofis</strong></h5>
+                    <address>
+                        <strong>@ViewBag.Kimlik.Title</strong><br>
+                        @ViewBag.Iletisim.Adres
+                    </address>
+
+                    <p>
+                        <i class="icon-phone"></i> @ViewBag.Iletisim.Telefon <br>
+                        <i class="icon-phone-sign"></i> @ViewBag.Iletisim.Fax <br>
+                        <i class="icon-envelope-alt"></i> @ViewBag.Iletisim.Email
+                    </p>
+
+                </div>
+                <a></a>
+                <br /><br />
+                    <div class="widget">
+                        <h5 class="widgetheading"><strong>Antalya Ofis</strong></h5>
+                        <address>
+                            <strong> Antalya Ofis</strong><br>
+                            Antalya Ofisimiz Cok Yakında Hizmetinizde...
+                        </address>
+
+                        <p>
+                            <i class="icon-phone"></i>- <br>
+                            <i class="icon-phone-sign"></i> - <br>
+                            <i class="icon-envelope-alt"></i> -
+                        </p>
+
+                    
+                </div>
+            </div>
+            <br /><br />
+   
+            <div class="span6">
+                <h4>Aşağıda ki İletişim Formunu Doldurarak <strong>Bizimle İletişime Geçebilirsiniz...</strong></h4>
+                @if (ViewBag.Uyari == "Mesajınız başarı ile gönderilmiştir.")
+            {
+                    <div class="alert alert-info">@ViewBag.Uyari</div>
+                }
+                <form action="/Home/Iletisim/" method="post" role="form" class="contactForm">
+                    @Html.AntiForgeryToken()
+
+                    <div id="sendmessage"><a>@ViewBag.Uyari</a></div>
+                    <div id="errormessage"></div>
+
+                    <div class="row">
+                        <div class="span2 form-group">
+                            <input type="text" name="adsoyad" class="form-control" id="name" placeholder="Ad Soyad" data-rule="minlen:4" data-msg="Lütfen En Az 4 Karakter Giriniz." />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="span2 form-group">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email Adresi" data-rule="email" data-msg="Email Formatında olmalı" />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="span2 form-group">
+                            <input type="text" class="form-control" name="konu" id="subject" placeholder="Konu" data-rule="minlen:4" data-msg="Lütfen En Az 8 Karakter Giriniz." />
+                            <div class="validation"></div>
+                        </div>
+                        <div class="span6 margintop10 form-group">
+                            <textarea class="form-control" name="mesaj" rows="12" data-rule="required" data-msg="Lütfen Mesajınızı Yazınız..." placeholder="Mesaj"></textarea>
+                            <div class="validation"></div>
+                            <p class="text-center">
+                                <button class="btn btn-large btn-theme margintop10" type="submit">Gönder</button>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@{
+    Html.RenderAction("FooterPartial", "Home");}

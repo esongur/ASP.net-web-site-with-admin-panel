@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.BlogKategori>
+@using Ertunc_Tibbi_Cihaz_Web_Site.Helper;
+
+    @foreach (var item in Model)
+    {
+    <ul class="cat">
+        <li><i class="icon-angle-right"></i><a href="/BlogPostKategori/@SeoHelper.ToSeoUrl(item.BlogKategoriAd).ToLower()-@item.BlogKategoriId">@item.BlogKategoriAd</a><span> (@item.Blogs.Count)</span></li>
+    </ul>
+    }

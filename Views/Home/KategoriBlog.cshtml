@@ -1,0 +1,85 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using Ertunc_Tibbi_Cihaz_Web_Site.Helper;
+@model IPagedList < Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.Blog >
+    @{
+    ViewBag.Title = "KategoriBlog";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+            <div class="span4">
+                <div class="inner-heading">
+                    <h2>Blog-Haberler</h2>
+                </div>
+            </div>
+            <div class="span8">
+                <ul class="breadcrumb">
+                    <li><a href="/Anasayfa"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+                    <li><a href="#">Blog</a><i class="icon-angle-right"></i></li>
+                    <li class="active"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="span4">
+                <aside class="left-sidebar">
+                    <div class="widget">
+                        <form class="form-search">
+                            <input placeholder="Type something" type="text" class="input-medium search-query">
+                            <button type="submit" class="btn btn-square btn-theme">Search</button>
+                        </form>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widgetheading">Kategoriler</h5>
+                        @{
+                            Html.RenderAction("BlogKategoriPartial", "Home");
+                        }
+                    </div>
+                    <div class="widget">
+                        <h5 class="widgetheading">Latest posts</h5>
+                        @{
+                            Html.RenderAction("BlogKayitPartial", "Home");
+                        }
+                    </div>
+                </aside>
+            </div>
+
+
+            <div class="span8">
+                <article>
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                        <div class="span8">
+                            <div class="post-image">
+                                <div class="post-heading">
+                                    <h3><a href="/BlogPost/@SeoHelper.ToSeoUrl(item.Baslik)-@item.BlogId-@item.BlogId">@item.Baslik</a></h3>
+                                </div>
+                                <img src="@item.ResimURL" alt="@item.Baslik" />
+                            </div>
+                            <p>
+                                @Html.Raw(item.Aciklama)
+                            </p>
+
+                        </div>
+                        }
+                    </div>
+                </article>
+                <div id="pagination">
+                    @Html.PagedListPager(Model, sayfa => Url.Action("Blog", new { sayfa }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+@{
+    Html.RenderAction("FooterPartial", "Home");
+}

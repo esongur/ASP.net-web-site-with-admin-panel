@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.Blog>
+@using Ertunc_Tibbi_Cihaz_Web_Site.Helper;
+@foreach (var item in Model)
+{
+    <ul class="recent">
+        <li>
+            <img src="@item.ResimURL" class="pull-left" alt="@item.Baslik" />
+            <h6><a href="/BlogPost/@SeoHelper.ToSeoUrl(item.Baslik)-@item.BlogId">@item.Baslik</a></h6>
+            <p>
+                @Html.Raw(item.Aciklama.Substring(0, 150))
+            </p>
+        </li>
+
+    </ul>
+
+}
+   

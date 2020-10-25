@@ -1,0 +1,16 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IEnumerable<Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.Biomedikal>
+@foreach (var item in Model)
+{
+    <ul class="recent">
+        <li>
+            <img src="@item.ResimURL" class="pull-left" alt="@item.Baslik" />
+            <h6><a href="#">@item.Baslik</a></h6>
+            
+        </li>
+
+    </ul>
+
+}
+

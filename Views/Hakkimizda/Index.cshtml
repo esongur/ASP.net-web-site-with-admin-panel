@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.Hakkimizda>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+<div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-table table-responsive-sm"></i> Hakkımızda</h3>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-home"></i><a href="/YonetimPaneli">AnaSayfa</a></li>
+        <li><i class="fa fa-table"></i>Hakkımızda</li>
+    </ol>
+</div>
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResimUrl1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResimUrl2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResimUrl3)
+        </th>
+        <th>İşlemler</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.Raw( item.Aciklama)
+        </td>
+        <td>
+            <img src="@item.ResimUrl1" width="300" height="200" />
+        </td>
+        <td>
+            <img src="@item.ResimUrl2" width="300" height="200" />
+        </td>
+        <td>
+            <img src="@item.ResimUrl3" width="300" height="200" />
+        </td>
+        <td>
+            @Html.ActionLink("Güncelle", "Edit", new { id=item.HakkimizdaId }) 
+        </td>
+    </tr>
+}
+
+</table>

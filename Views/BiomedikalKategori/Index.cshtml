@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.BiomedikalKategori>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+<div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-table table-responsive-sm"></i> Biomedikal Hizmetler Kategori</h3>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-home"></i><a href="/YonetimPaneli">AnaSayfa</a></li>
+        <li><i class="fa fa-table"></i><a href="/BiomedikalKategori/">Biomedikal Hizmetler Kategori</a></li>
+        
+
+    </ol>
+</div>
+<p>
+    @Html.ActionLink("Yeni", "Create")
+</p>
+<table class="table table-bordered table-responsive-sm">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BiomedikalKategoriAd)
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BiomedikalKategoriAd)
+        </td>
+        <td>
+            @Html.ActionLink("Güncelle", "Edit", new { id=item.BiomedikalKategoriId }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.BiomedikalKategoriId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,55 @@
+﻿@model Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.UrunKategori
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+<script type="text/javascript">
+    CKEDITOR.replace('editor');
+</script>
+
+<div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-table table-responsive-sm"></i> Yeni Kategori</h3>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-home"></i><a href="/Admin/Index/">AnaSayfa</a></li>
+        <li><i class="fa fa-table"></i><a href="/UrunKategori/Index"> Ürün Kategori</a></li>
+        <li><i class="fa fa-table"></i><a> Yeni Kategori</a></li>
+    </ol>
+</div>
+
+@using (Html.BeginForm("Create", "UrunKategori", FormMethod.Post, new { enctype = "Multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>UrunKategori</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.UrunKategoriAd, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UrunKategoriAd, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UrunKategoriAd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UrunAciklama, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <textarea class="ckeditor" required name="UrunAciklama"></textarea>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Kaydet" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "Index")
+</div>

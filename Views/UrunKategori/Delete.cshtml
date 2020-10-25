@@ -1,0 +1,47 @@
+﻿@model Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.UrunKategori
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+<div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-table table-responsive-sm"></i>Servis Güncelle</h3>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-home"></i><a href="/Admin/Index/">AnaSayfa</a></li>
+        <li><i class="fa fa-table"></i><a href="/UrunKategori/Index"> Ürün Kategori</a></li>
+        <li><i class="fa fa-table"></i><a>Kategori Sil</a></li>
+    </ol>
+</div>
+<h3>Bu kaydı silmek istediğinize Emin misimiz?</h3>
+<div>
+    <h4>UrunKategori</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunKategoriAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunKategoriAd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunAciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunAciklama)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Geri Dön", "Index")
+        </div>
+    }
+</div>

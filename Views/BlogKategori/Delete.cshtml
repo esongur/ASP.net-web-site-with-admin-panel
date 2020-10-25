@@ -1,0 +1,49 @@
+﻿@model Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.BlogKategori
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+<div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-table table-responsive-sm"></i> Blog-Haber Kategori Sil</h3>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-home"></i><a href="/YonetimPaneli">AnaSayfa</a></li>
+        <li><i class="fa fa-table"></i><a href="/BlogKategori/">Blog-Haber Kategori</a></li>
+        <li><i class="fa fa-table">Blog-Haber Kategori Sil</i></li>
+
+    </ol>
+</div>
+
+<h3>Bu kaydı silmek istediğinize Emin misimiz?</h3>
+<div>
+    <h4>BlogKategori</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogKategoriAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogKategoriAd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogAciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogAciklama)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Geri Dön", "Index")
+        </div>
+    }
+</div>

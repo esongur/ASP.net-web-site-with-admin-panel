@@ -1,0 +1,82 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using Ertunc_Tibbi_Cihaz_Web_Site.Helper;
+@model IPagedList<Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.Urunler>
+@{
+    ViewBag.Title = "KategoriUrunler";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+            <div class="span4">
+                <div class="inner-heading">
+                    <h2>Ürünler</h2>
+                </div>
+            </div>
+            <div class="span8">
+                <ul class="breadcrumb">
+                    <li><a href="/Anasayfa"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+                    <li><a href="#">Ürünler</a><i class="icon-angle-right"></i></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <aside class="left-sidebar">
+                    <div class="widget">
+                        <form class="form-search">
+                            <input placeholder="Type something" type="text" class="input-medium search-query">
+                            <button type="submit" class="btn btn-square btn-theme">Search</button>
+                        </form>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widgetheading">Kategoriler</h5>
+                        @{
+                            Html.RenderAction("UrunKategoriPartial", "Home");
+                        }
+                    </div>
+                    <div class="widget">
+                        <h5 class="widgetheading">Son Eklenen Ürünler</h5>
+                        @{
+                            Html.RenderAction("UrunKayitPartial", "Home");
+                        }
+                    </div>
+                </aside>
+            </div>
+
+
+            <div class="span9">
+                <div class="container">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+
+
+                            <div class="urunlist" style="width:363px; margin-bottom: 60px; ">
+                                <a href="/Ürünler/@SeoHelper.ToSeoUrl(item.UrunlerBaslik).ToLower()-@item.UrunlerId">
+                                    <img src="@item.UrunlerResimURL1">
+                                    <span class="baslik" style="color:#263b7e; font-weight:600; font-size:14px;">@item.UrunlerBaslik</span>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+                </div>
+
+                <div id="pagination">
+                    @Html.PagedListPager(Model, sayfa => Url.Action("Urunler", new { sayfa }), PagedListRenderOptions.TwitterBootstrapPager)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@{
+    Html.RenderAction("FooterPartial", "Home");}

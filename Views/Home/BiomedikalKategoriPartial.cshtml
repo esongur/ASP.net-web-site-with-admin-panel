@@ -1,0 +1,27 @@
+﻿
+@model IEnumerable<Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.BiomedikalKategori>
+@using Ertunc_Tibbi_Cihaz_Web_Site.Helper;
+
+
+
+
+
+
+
+
+
+<div class="left_menu" style="margin-right:20px; margin-left: 15px;">
+    <div id="cssmenu">
+        <ul>
+@foreach (var item in Model)
+{
+            <li class="">
+                <a href="/BiomedikalHizmetlerKategori/@SeoHelper.ToSeoUrl(item.BiomedikalKategoriAd).ToLower()-@item.BiomedikalKategoriId">@item.BiomedikalKategoriAd (@item.Biomedikals.Count())</a>
+
+            </li>
+
+
+}
+        </ul>
+    </div>
+</div>

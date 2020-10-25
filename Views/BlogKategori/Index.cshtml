@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Ertunc_Tibbi_Cihaz_Web_Site.Models.Model.BlogKategori>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout .cshtml";
+}
+
+
+<div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-table table-responsive-sm"></i> Blog-Haber Kategori </h3>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-home"></i><a href="/YonetimPaneli">AnaSayfa</a></li>
+        <li><i class="fa fa-table"></i><a href="/BlogKategori/">Blog-Haber Kategori</a></li>
+        
+
+    </ol>
+</div>
+<p>
+    @Html.ActionLink("Yeni", "Create")
+</p>
+<table class="table table-bordered table-responsive-sm table-striped"  >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogKategoriAd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogAciklama)
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogKategoriAd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogAciklama)
+        </td>
+        <td>
+            @Html.ActionLink("Güncelle", "Edit", new { id=item.BlogKategoriId }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.BlogKategoriId })
+        </td>
+    </tr>
+}
+
+</table>
